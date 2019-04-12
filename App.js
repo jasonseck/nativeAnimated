@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableOpacity, Animated, Easing} from 'react-native';
 import AnimatedModal from './AnimatedModal';
-
+import AnimatedModal2 from './AnimatedModal2';
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -24,6 +24,7 @@ export default class App extends Component<Props> {
     this.state={
       hello:false,
       isModalVisible:false,
+      isModalVisible2:false,
     }
   }
 
@@ -33,8 +34,12 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
       <TouchableOpacity onPress={()=>this.setState({isModalVisible:true})}>
-      <Text>fadeInLeft</Text>
+      <Text>Modal1</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={()=>this.setState({isModalVisible2:true})}>
+      <Text>Modal2</Text>
+      </TouchableOpacity>
+
       <AnimatedModal
                 title={"View Pokemon"}
                 visible={this.state.isModalVisible}
@@ -46,6 +51,18 @@ export default class App extends Component<Props> {
               >
               <Text style={{color:'black'}}>amd tjis is the content of the modal</Text>
               </AnimatedModal>
+              <AnimatedModal2
+                        title={"View Pokemon"}
+                        visible={this.state.isModalVisible2}
+                        onClose={() => {
+                          this.setState({
+                            isModalVisible2: false
+                          });
+                        }}
+                      >
+                      <Text style={{color:'black'}}>amd tjis is the content of the modal</Text>
+                      </AnimatedModal2>
+
       </View>
     );
   }

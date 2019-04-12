@@ -11,7 +11,7 @@ import {
 const { height, width } = Dimensions.get("window");
 
 type Props = {};
-export default class AnimatedModal extends Component<Props> {
+export default class AnimatedModal2 extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,24 +26,24 @@ export default class AnimatedModal extends Component<Props> {
       this.state.fadeAnim.setValue(0);
       this.state.moveAnim.setValue(0);
       Animated.sequence([
-        Animated.timing(this.state.moveAnim, {
-          toValue:1,
-          duration:0
-        }),
         Animated.timing(this.state.fadeAnim, {
           toValue: .8,
-          duration:250,
+          duration:0,
+        }),
+        Animated.spring(this.state.moveAnim, {
+          toValue:1,
+          duration:500,
         })
       ]).start();
           } else {
             Animated.sequence([
               Animated.timing(this.state.moveAnim, {
                 toValue:0,
-                duration:0
+                duration:250
               }),
               Animated.timing(this.state.fadeAnim, {
                 toValue: 0,
-                duration:250,
+                duration:0,
               })
             ]).start();
     }
