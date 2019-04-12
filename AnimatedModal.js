@@ -24,13 +24,14 @@ export default class AnimatedModal extends Component<Props> {
     if (this.props.visible) {
       this.state.fadeAnim.setValue(0);
       Animated.timing(this.state.fadeAnim, {
-        toValue: 1
+        toValue: 1,
+        duration:250,
       }).start();
     } else {
       Animated.timing(this.state.fadeAnim, {
         toValue: 0,
-        duration: 200,
-        easing: Easing.linear
+        duration: 400,
+        easing: Easing.inOutquad
       }).start();
     }
   }
