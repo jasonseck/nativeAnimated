@@ -32,7 +32,7 @@ export default class AnimatedModal2 extends Component<Props> {
         }),
         Animated.spring(this.state.moveAnim, {
           toValue:1,
-          duration:500,
+          speed: 25
         })
       ]).start();
           } else {
