@@ -10,6 +10,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableOpacity, Animated, Easing} from 'react-native';
 import AnimatedModal from './AnimatedModal';
 import AnimatedModal2 from './AnimatedModal2';
+import Backplane from './Backplane';
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -62,6 +63,16 @@ export default class App extends Component<Props> {
                       >
                       <Text style={{color:'black'}}>amd tjis is the content of the modal</Text>
                       </AnimatedModal2>
+                <Backplane
+                  title={"wiefowinef"}
+                  visible={this.state.isModalVisible2}
+                  onClose={() => {
+                    this.setState({
+                      isModalVisible2: false
+                    });
+                  }}
+                  >
+                  </Backplane>
 
       </View>
     );

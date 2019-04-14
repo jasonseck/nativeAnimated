@@ -11,7 +11,7 @@ import {
 const { height, width } = Dimensions.get("window");
 
 type Props = {};
-export default class AnimatedModal2 extends Component<Props> {
+export default class Backplane extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,24 +26,24 @@ export default class AnimatedModal2 extends Component<Props> {
       this.state.fadeAnim.setValue(0);
       this.state.moveAnim.setValue(0);
       Animated.sequence([
+        Animated.timing(this.state.moveAnim, {
+          toValue:1,
+          duration:0
+        }),
         Animated.timing(this.state.fadeAnim, {
           toValue: .8,
-          duration:0,
-        }),
-        Animated.spring(this.state.moveAnim, {
-          toValue:1,
-          speed: 25
+          duration:250,
         })
       ]).start();
           } else {
             Animated.sequence([
               Animated.timing(this.state.moveAnim, {
                 toValue:0,
-                duration:250
+                duration:0
               }),
               Animated.timing(this.state.fadeAnim, {
                 toValue: 0,
-                duration:0,
+                duration:250,
               })
             ]).start();
     }
@@ -67,7 +67,7 @@ export default class AnimatedModal2 extends Component<Props> {
           <Text style={styles.closeText}>Close</Text>
         </TouchableOpacity>
 
-        <Text style={{color:'white'}}>modal content here.</Text>
+        <Text style={{color:'white'}}>backplane of the modal.</Text>
         </View>
       </Animated.View>
     );
@@ -77,13 +77,11 @@ export default class AnimatedModal2 extends Component<Props> {
 const styles = {
   container: {
     position: "absolute",
-    height: height - 40,
-    width: width -40,
-    bottom:0 - 20,
-    backgroundColor: "#fff",
-    margin:40,
-    borderRadius:10,
-    zIndex:10000
+    height: height,
+    width: width,
+    bottom:0,
+    backgroundColor: "#000",
+    zIndex:9999
   },
   modalContent: {
     flex: 1,
